@@ -1,0 +1,46 @@
+<div class="container" ng-controller="gardenController">
+
+    <div class="row">
+        <div class="page-header">
+            <h1>Get Gardens</h1>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+        <!-- shows gardens button -->
+        <button class="btn btn-primary" ng-click="getGardens()">
+            Get all gardens
+        </button>
+
+    </div>
+
+    <!-- Show gardens -->
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Soil Humidity</th>
+                    <th>User id</th>
+                    <th>Sun Light</th>
+                    <th>Air Humidity</th>
+                    <th>Air Temperature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="garden in gardens">
+                    <td>{{ garden.id }}</td>
+                    <td>{{ garden.soilHumidity }}</td>
+                    <td>{{ garden.user.id }}</td>
+                    <td>{{ garden.sunLight }}</td>
+                    <td>{{ garden.airHumidity }}</td>
+                    <td>{{ garden.airTemperature }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

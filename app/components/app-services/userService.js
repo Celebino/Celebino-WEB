@@ -1,4 +1,4 @@
-function () {
+/* function () {
     'use strict';
 
     angular
@@ -10,24 +10,24 @@ function () {
     function UserService($http) {
         var service = {};
 
-        service.GetAll = GetAll;
-        service.GetById = GetById;
-        service.GetByUsername = GetByUsername;
-        service.GetByEmail = GetByEmail;
-        service.Create = Create;
+        service.getAll = GetAll;
+        service.getById = GetById;
+        service.getByUsername = GetByUsername;
+        service.getByEmail = GetByEmail;
+        service.create = Create;
 
 
         return service;
 
-        function GetAll() {
+        function getAll() {
             return $http.get(baseUrl + '/').then(handleSuccess, handleError('Error getting all users'));
         }
 
-        function GetById(id) {
+        function getById(id) {
             return $http.get('/' + id).then(handleSuccess, handleError('Error getting user by id'));
         }
 
-        function GetByUsername(username) {
+        function getByUsername(username) {
             return $http.get('/username/' +username).then(handleSuccess, handleError('Error getting user by username'));
         }
 
@@ -35,7 +35,7 @@ function () {
             return $http.get('/username/' + email).then(handleSuccess, handleError('Error getting user by email'));
         }
 
-        function Create(user) {
+        function create(user) {
             return $http.post('/', user).then(handleSuccess, handleError('Error creating user'));
         }
 
@@ -54,4 +54,4 @@ function () {
         }
     }
 
-})();
+})(); */

@@ -1,47 +1,22 @@
-function () {
-    'use strict';
+celebinoApp.factory("GardenStatusService", function($http) {
 
-    angular
-        .module('celebinoApp')
-        .factory('GardenStatusService', GardenStatusService);
+    var urlBase = "http://localhost:8080/Celebino/gardenstatus";
 
-    GardenStatusService.$inject = ['$http'];
-    var baseUrl = 'http://localhost:8080/Celebino/gardenstatus';
-    function GardenStatusService($http) {
-        var service = {};
+    var _getAll = function() {
+        return $http.get(urlBase + "/")
+    };
 
-        service.GetAll = GetAll;
-        service.GetById = GetById;
-        service.Create = Create;
+    var _insertGarden = function(garden){
+		return $http.post(urlBase + "/", garden)
+	};
 
+    var _getByGardenId = function(id){
+		return $http.get(urlBase + "/garden/" + encodeURI(id))
+	};
 
-        return service;
-
-        function GetAll() {
-            return $http.get(baseUrl + '/').then(handleSuccess, handleError('Error getting all garden status'));
-        }
-
-        function GetById(id) {
-            return $http.get('/' + id).then(handleSuccess, handleError('Error getting garden status by id'));
-        }
-
-        function Create(gardenStatus) {
-            return $http.post('/', gardenStatus).then(handleSuccess, handleError('Error creating garden status'));
-        }
-
-
-
-        // private functions
-
-        function handleSuccess(res) {
-            return res.data;
-        }
-
-        function handleError(error) {
-            return function () {
-                return { success: false, message: error };
-            };
-        }
-    }
-
-})();
+    return {
+        getAll: _getAll,
+        insertGarden: _insertGarden,
+        getByGardenId: _getByGardenId
+    };
+});

@@ -1,0 +1,36 @@
+<div class="container" ng-controller="gardenController">
+
+    <div layout="column" layout-align="start stretch">
+        <div class="page-header">
+            <h1>Create Garden</h1>
+        </div>
+
+        <form>
+
+          <div>
+            User id:  <input type="number" ng-model="garden.user.id" placeholder="Id" required>
+          </div>
+            <div>
+              Ideal soil humidity:  <input type="number" ng-model="garden.soilHumidity" placeholder="1 to 100" required>
+            </div>
+
+            <div>
+              Ideal sun light:  <input type="number" ng-model="garden.sunLight" placeholder="1 to 100" required>
+            </div>
+            <div>
+              Ideal air humidity:  <input type="number" ng-model="garden.airHumidity" placeholder="1 to 100" required>
+            </div>
+            <div>
+                Ideal air temperature: <input type="number" ng-model="garden.airTemperature" placeholder="1 to 100" required>
+            </div>
+
+
+
+            <div>
+                <button class="btn btn-primary" ng-click="insertGarden()">
+                    Insert Garden
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

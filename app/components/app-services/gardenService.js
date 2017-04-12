@@ -1,47 +1,22 @@
-function () {
-    'use strict';
+celebinoApp.factory("GardenService", function($http) {
 
-    angular
-        .module('celebinoApp')
-        .factory('GardenService', GardenService);
+    var urlBase = "http://localhost:8080/Celebino/garden";
 
-    GardenService.$inject = ['$http'];
-    var baseUrl = 'http://localhost:8080/Celebino/garden';
-    function GardenService($http) {
-        var service = {};
+    var _getAll = function() {
+        return $http.get(urlBase + "/")
+    };
 
-        service.GetAll = GetAll;
-        service.GetById = GetById;
-        service.Create = Create;
+    var _insertGarden = function(garden){
+		return $http.post(urlBase + "/", garden)
+	};
 
+    var _consultarAlunoByNome = function(nome){
+		return $http.get(urlBase + "/aluno/listar/nome/" + encodeURI(nome))
+	};
 
-        return service;
-
-        function GetAll() {
-            return $http.get(baseUrl + '/').then(handleSuccess, handleError('Error getting all gardens'));
-        }
-
-        function GetById(id) {
-            return $http.get('/' + id).then(handleSuccess, handleError('Error getting garden by id'));
-        }
-
-        function Create(garden) {
-            return $http.post('/', garden).then(handleSuccess, handleError('Error creating garden'));
-        }
-
-
-
-        // private functions
-
-        function handleSuccess(res) {
-            return res.data;
-        }
-
-        function handleError(error) {
-            return function () {
-                return { success: false, message: error };
-            };
-        }
-    }
-
-})();
+    return {
+        getAll: _getAll,
+        insertGarden: _insertGarden,
+        consultarAlunoByNome: _consultarAlunoByNome
+    };
+});
