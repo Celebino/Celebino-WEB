@@ -1,24 +1,19 @@
 celebinoApp.factory("LoginService", function($http) {
 
-    var urlBase = "http://localhost:8080/Celebino";
+    var urlBase = "http://localhost:8080/user";
+    var currentUser;
 
-
-
-    var _listarAlunos = function() {
-        return $http.get(urlBase + "/aluno/listar/")
+    // Login user
+    var _loginUser = function(login){
+      return $http.post(urlBase + "/login", login)
     };
 
-    var _cadastrarAluno = function(aluno){
-		return $http.post(urlBase + "/aluno/inserir", aluno)
-	};
+    var _getCurrentUser = function(){
 
-    var _consultarAlunoByNome = function(nome){
-		return $http.get(urlBase + "/aluno/listar/nome/" + encodeURI(nome))
-	};
+    };
 
     return {
-        listarAlunos: _listarAlunos,
-        cadastrarAluno: _cadastrarAluno,
-        consultarAlunoByNome: _consultarAlunoByNome
+        loginUser: _loginUser
     };
+
 });

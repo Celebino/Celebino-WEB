@@ -30,6 +30,9 @@
 
     <!-- css -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+
 
     <!-- App -->
     <script src="app/app.module.js"></script>
@@ -40,6 +43,10 @@
     <script src="app/components/menu/menuController.js"></script>
     <script src="app/components/garden/gardenController.js"></script>
     <script src="app/components/charts/chartsController.js"></script>
+    <script src="app/components/login/loginController.js"></script>
+    <script src="app/components/acess/acessController.js"></script>
+
+
 
 
 
@@ -47,52 +54,14 @@
     <script src="app/components/app-services/userService.js"></script>
     <script src="app/components/app-services/gardenService.js"></script>
     <script src="app/components/app-services/GardenStatusService.js"></script>
-
-
-
-
-
+    <script src="app/components/login/loginService.js"></script>
 
 
     </head>
 
-    <body  ng-cloak layout="column">
+    <body>
+      <div ui-view>
 
-      <div layout="column" layout-fill>
-
-        <!-- Header -->
-        <md-toolbar>
-
-          <div class="md-toolbar-tools">
-
-            <h2 md-truncate flex>Celebino</h2>
-
-            <md-button>
-              Sair
-            </md-button>
-          </div>
-
-        </md-toolbar>
-
-        <div layout="column" flex>
-          <div class="box1">
-            <div ui-view>
-                <!-- Conteúdo da rota atual -->
-            </div>
-          </div>
       </div>
-
-        <div class="vertical-menu">
-          <a href="#" class="active">Dashboard</a>
-          <a ui-sref="garden">Garden</a>
-          <a ui-sref="form">Forms</a>
-          <a ui-sref="#">Tables</a>
-          <a ui-sref="charts">Charts</a>
-        </div>
-
-    </div>
-
-
-
-  </body>
+    </body>
 </html>

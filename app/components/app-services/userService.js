@@ -1,57 +1,50 @@
-/* function () {
-    'use strict';
+celebinoApp.factory("UserService", function($http) {
 
-    angular
-        .module('celebinoApp')
-        .factory('UserService', UserService);
+    var urlBase = "http://localhost:8080/Celebino/user";
+    var user ;
+    // Get all users
+    var _getAll = function() {
+        return $http.get(urlBase + "/")
+    };
 
-    UserService.$inject = ['$http'];
-    var baseUrl = 'http://localhost:8080/Celebino/user';
-    function UserService($http) {
-        var service = {};
+    // Get user by id
+    var _getById = function(id) {
+        return $http.get(urlBase + "/" + id)
+    };
 
-        service.getAll = GetAll;
-        service.getById = GetById;
-        service.getByUsername = GetByUsername;
-        service.getByEmail = GetByEmail;
-        service.create = Create;
+    // Get user by email
+    var _getByEmail = function(email) {
+        return $http.get(urlBase + "/email/" + email)
+    };
 
+    // Get user by username
+    var _getByUsername = function(username) {
+        return $http.get(urlBase + "/username/" + username)
+    };
 
-        return service;
+    // insert a user
+    var _insertUser = function(user){
+		    return $http.post(urlBase + "/", user)
+	  };
 
-        function getAll() {
-            return $http.get(baseUrl + '/').then(handleSuccess, handleError('Error getting all users'));
-        }
+    // Login user
+    var _loginUser = function(login){
+      return $http.post(urlBase + "/login", login)
+    };
 
-        function getById(id) {
-            return $http.get('/' + id).then(handleSuccess, handleError('Error getting user by id'));
-        }
-
-        function getByUsername(username) {
-            return $http.get('/username/' +username).then(handleSuccess, handleError('Error getting user by username'));
-        }
-
-        function getByEmail(email) {
-            return $http.get('/username/' + email).then(handleSuccess, handleError('Error getting user by email'));
-        }
-
-        function create(user) {
-            return $http.post('/', user).then(handleSuccess, handleError('Error creating user'));
-        }
+    var _setCurrentUserByEmail = function(email){
+      user = email;
+    };
 
 
 
-        // private functions
-
-        function handleSuccess(res) {
-            return res.data;
-        }
-
-        function handleError(error) {
-            return function () {
-                return { success: false, message: error };
-            };
-        }
-    }
-
-})(); */
+    return {
+        getAll: _getAll,
+        getById: _getById,
+        getByEmail: _getByEmail,
+        getByUsername: _getByUsername,
+        insertUser: _insertUser,
+        loginUser: _loginUser,
+        setCurrentUserByEmail : _setCurrentUserByEmail
+    };
+});

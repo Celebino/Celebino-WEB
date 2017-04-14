@@ -9,15 +9,19 @@ celebinoApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: pathView + 'dashboard/dashboardView.html'
+            templateUrl: pathView + 'home/homeView.html'
         })
-        .state('aboutUs', {
-            url: '/aboutUs',
-            templateUrl: pathView + 'aboutUs/aboutUsView.html'
+        .state('about', {
+            url: '/about',
+            templateUrl: pathView + 'about/index.html'
         })
         .state("login", {
             url: '/login',
             templateUrl: pathView + 'login/loginView.html'
+        })
+        .state("acess", {
+            url: '/acess',
+            templateUrl: pathView + 'acess/acessView.html'
         })
         .state("garden", {
             url: '/garden',
