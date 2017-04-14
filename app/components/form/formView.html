@@ -1,36 +1,78 @@
-<div class="container" ng-controller="gardenController">
+<!-- <div ui-view="head"></div>
+<h1 class="text-center">This content is in main.html</h1>
+<div ui-view="nav"></div> -->
+ <link href="assets/css/home.css" rel="stylesheet">
 
-    <div layout="column" layout-align="start stretch">
-        <div class="page-header">
-            <h1>Create Garden</h1>
+
+ <!-- Header -->
+ <md-toolbar>
+
+   <div class="md-toolbar-tools">
+
+     <h2 md-truncate flex>Celebino</h2>
+
+     <md-button>
+       Sair
+     </md-button>
+   </div>
+
+ </md-toolbar>
+
+
+
+
+
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"> <a ui-sref="home">Home</a></li>
+            <li ><a ui-sref="garden">My Gardens</a></li>
+            <li ><a ui-sref="form">New Garden</a></li>
+            <li ><a ui-sref="charts">Garden Status</a></li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" ui-view>
+                      <div class="container" ng-controller="gardenController">
+
+                          <div layout="column" layout-align="start stretch">
+                              <div class="page-header">
+                                  <h1>Create Garden</h1>
+                              </div>
+
+                              <form>
+
+
+                                  <div>
+                                    Ideal soil humidity:  <input type="number" ng-model="garden.soilHumidity" placeholder="1 to 100" required>
+                                  </div>
+
+                                  <div>
+                                    Ideal sun light:  <input type="number" ng-model="garden.sunLight" placeholder="1 to 100" required>
+                                  </div>
+                                  <div>
+                                    Ideal air humidity:  <input type="number" ng-model="garden.airHumidity" placeholder="1 to 100" required>
+                                  </div>
+                                  <div>
+                                      Ideal air temperature: <input type="number" ng-model="garden.airTemperature" placeholder="1 to 100" required>
+                                  </div>
+
+
+
+                                  <div>
+                                      <button class="btn btn-primary" ng-click="insertGarden()">
+                                          Insert Garden
+                                      </button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <form>
-
-          <div>
-            User id:  <input type="number" ng-model="garden.user.id" placeholder="Id" required>
-          </div>
-            <div>
-              Ideal soil humidity:  <input type="number" ng-model="garden.soilHumidity" placeholder="1 to 100" required>
-            </div>
-
-            <div>
-              Ideal sun light:  <input type="number" ng-model="garden.sunLight" placeholder="1 to 100" required>
-            </div>
-            <div>
-              Ideal air humidity:  <input type="number" ng-model="garden.airHumidity" placeholder="1 to 100" required>
-            </div>
-            <div>
-                Ideal air temperature: <input type="number" ng-model="garden.airTemperature" placeholder="1 to 100" required>
-            </div>
-
-
-
-            <div>
-                <button class="btn btn-primary" ng-click="insertGarden()">
-                    Insert Garden
-                </button>
-            </div>
-        </form>
     </div>
 </div>

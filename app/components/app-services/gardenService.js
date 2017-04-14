@@ -6,17 +6,19 @@ celebinoApp.factory("GardenService", function($http) {
         return $http.get(urlBase + "/")
     };
 
+    var _getByUser = function(user) {
+        return $http.get(urlBase + "/user/" + user)
+    };
+
     var _insertGarden = function(garden){
 		return $http.post(urlBase + "/", garden)
 	};
 
-    var _consultarAlunoByNome = function(nome){
-		return $http.get(urlBase + "/aluno/listar/nome/" + encodeURI(nome))
-	};
+  
 
     return {
         getAll: _getAll,
         insertGarden: _insertGarden,
-        consultarAlunoByNome: _consultarAlunoByNome
+        getByUser: _getByUser
     };
 });

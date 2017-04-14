@@ -1,53 +1,98 @@
-<div class="container" ng-controller="chartsController">
+<!-- <div ui-view="head"></div>
+<h1 class="text-center">This content is in main.html</h1>
+<div ui-view="nav"></div> -->
+ <link href="assets/css/home.css" rel="stylesheet">
 
-    <div class="row">
-        <div class="page-header">
-            <h1>Garden status</h1>
+
+ <!-- Header -->
+ <md-toolbar>
+
+   <div class="md-toolbar-tools">
+
+     <h2 md-truncate flex>Celebino</h2>
+
+     <md-button ui-sref="acess">
+       Sair
+     </md-button>
+   </div>
+
+ </md-toolbar>
+
+
+
+
+
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"> <a ui-sref="home">Home</a></li>
+            <li ><a ui-sref="garden">My Gardens</a></li>
+            <li ><a ui-sref="form">New Garden</a></li>
+            <li ><a ui-sref="charts">Garden Status</a></li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" ui-view>
+                      <div class="container" ng-controller="chartsController">
+
+                          <div class="row">
+                              <div class="page-header">
+                                  <h1>Garden status</h1>
+                              </div>
+                          </div>
+
+                          <div class="row">
+
+                              <form name="formPesquisa">
+                                  <!-- Pesquisar aluno pelo nome. O parâmetro nome é passado a função todas as vezes que o usuário digita algo -->
+                                  <input type="text" ng-model="id" ng-keyup="getByGardenId(id)" placeholder="id do garden">
+
+                                  <!-- Limpar todos os campos do formulário e listas das páginas -->
+                                  <button class="btn btn-primary" ng-click="limparFormulario()">
+                                      Limpar
+                                  </button>
+                              </form>
+                          </div>
+
+
+
+                          <!-- Exibir lista de Alunos -->
+                          <div class="row">
+                              <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th>Id</th>
+                                          <th>Soil Humidity</th>
+                                          <th>Sun Light</th>
+                                          <th>Air Humidity</th>
+                                          <th>Air Temperature</th>
+                                          <th>Time</th>
+
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr ng-repeat="gardenStatus in gardenStatuss">
+                                          <td>{{ gardenStatus.id }}</td>
+                                          <td>{{ gardenStatus.soilHumidity}}</td>
+                                          <td>{{ gardenStatus.sunLight}}</td>
+                                          <td>{{ gardenStatus.airHumidity}}</td>
+                                          <td>{{ gardenStatus.airTemperature}}</td>
+                                          <td>{{ gardenStatus.time}}</td>
+
+
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
+                      </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="row">
-
-        <form name="formPesquisa">
-            <!-- Pesquisar aluno pelo nome. O parâmetro nome é passado a função todas as vezes que o usuário digita algo -->
-            <input type="text" ng-model="id" ng-keyup="getByGardenId(id)" placeholder="id do garden">
-
-            <!-- Limpar todos os campos do formulário e listas das páginas -->
-            <button class="btn btn-primary" ng-click="limparFormulario()">
-                Limpar
-            </button>
-        </form>
-    </div>
-
-
-
-    <!-- Exibir lista de Alunos -->
-    <div class="row">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Soil Humidity</th>
-                    <th>Sun Light</th>
-                    <th>Air Humidity</th>
-                    <th>Air Temperature</th>
-                    <th>Time</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="gardenStatus in gardenStatuss">
-                    <td>{{ gardenStatus.id }}</td>
-                    <td>{{ gardenStatus.soilHumidity}}</td>
-                    <td>{{ gardenStatus.sunLight}}</td>
-                    <td>{{ gardenStatus.airHumidity}}</td>
-                    <td>{{ gardenStatus.airTemperature}}</td>
-                    <td>{{ gardenStatus.time}}</td>
-
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
 </div>

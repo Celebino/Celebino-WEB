@@ -10,7 +10,9 @@ celebinoApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('home', {
             url: '/',
             templateUrl: pathView + 'home/homeView.html'
+
         })
+
         .state('about', {
             url: '/about',
             templateUrl: pathView + 'about/index.html'
@@ -23,7 +25,7 @@ celebinoApp.config(function ($stateProvider, $urlRouterProvider) {
             url: '/acess',
             templateUrl: pathView + 'acess/acessView.html'
         })
-        .state("garden", {
+        .state('garden', {
             url: '/garden',
             templateUrl: pathView + 'garden/gardenView.html'
         })
@@ -39,5 +41,6 @@ celebinoApp.config(function ($stateProvider, $urlRouterProvider) {
           url: '/dashboard',
           templateUrl: pathView + 'dashboard/dashboardView.html'
         })
+
 
 });

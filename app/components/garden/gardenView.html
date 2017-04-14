@@ -1,44 +1,89 @@
-<div class="container" ng-controller="gardenController">
+<!-- <div ui-view="head"></div>
+<h1 class="text-center">This content is in main.html</h1>
+<div ui-view="nav"></div> -->
+ <link href="assets/css/home.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div class="row">
-        <div class="page-header">
-            <h1>Get Gardens</h1>
+
+ <!-- Header -->
+ <md-toolbar>
+
+   <div class="md-toolbar-tools">
+
+     <h2 md-truncate flex>Celebino</h2>
+
+     <md-button ui-sref="acess">
+       Sair
+     </md-button>
+   </div>
+
+ </md-toolbar>
+
+
+
+
+
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"> <a ui-sref="home">Home</a></li>
+            <li ><a ui-sref="garden">My Gardens</a></li>
+            <li ><a ui-sref="form">New Garden</a></li>
+            <li ><a ui-sref="charts">Garden Status</a></li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" ui-view>
+                      <div class="container" ng-controller="gardenController">
+
+                          <div class="row">
+                              <div class="page-header">
+                                  <h1>Get Gardens</h1>
+                              </div>
+                          </div>
+
+
+
+                          <div class="row">
+
+                              <!-- shows gardens button -->
+                              <button class="btn btn-primary" ng-click="getGardensByUser()">
+                                  Get all gardens
+                              </button>
+
+                          </div>
+
+                          <!-- Show gardens -->
+                          <div class="row">
+                              <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th> <i class="fa fa-key" aria-hidden="true"></i> ID</th>
+                                          <th> <i class="fa fa-tint" aria-hidden="true"></i> Soil Humidity</th>
+                                          <th> <i class="fa fa-sun-o" aria-hidden="true"></i> Sun Light</th>
+                                          <th> <i class="fa fa-snowflake-o" aria-hidden="true"></i> Air Humidity</th>
+                                          <th> <i class="fa fa-thermometer-quarter" aria-hidden="true"></i> Air Temperature</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr ng-repeat="garden in gardens">
+                                          <td>{{ garden.id }}</td>
+                                          <td>{{ garden.soilHumidity }}</td>
+                                          <td>{{ garden.sunLight }}</td>
+                                          <td>{{ garden.airHumidity }}</td>
+                                          <td>{{ garden.airTemperature }}</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
-    <div class="row">
-
-        <!-- shows gardens button -->
-        <button class="btn btn-primary" ng-click="getGardens()">
-            Get all gardens
-        </button>
-
-    </div>
-
-    <!-- Show gardens -->
-    <div class="row">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Soil Humidity</th>
-                    <th>Sun Light</th>
-                    <th>Air Humidity</th>
-                    <th>Air Temperature</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="garden in gardens">
-                    <td>{{ garden.id }}</td>
-                    <td>{{ garden.soilHumidity }}</td>
-                    <td>{{ garden.sunLight }}</td>
-                    <td>{{ garden.airHumidity }}</td>
-                    <td>{{ garden.airTemperature }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
 </div>

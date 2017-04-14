@@ -1,10 +1,11 @@
-celebinoApp.controller('gardenController', function (GardenService, $scope, $state, $mdToast) {
+celebinoApp.controller('gardenController', function (GardenService, UserService, $scope, $state, $mdToast) {
 
 
     $scope.gardens = [];
 
     $scope.insertGarden = function () {
-
+      console.log(UserService.getCurrentUser());
+        $scope.garden.user = UserService.getCurrentUser();
         GardenService.insertGarden($scope.garden)
             .then(function (response) {
                 // Chamado quando a resposta contém status de sucesso.
@@ -29,6 +30,13 @@ celebinoApp.controller('gardenController', function (GardenService, $scope, $sta
 
     $scope.getGardens = function () {
         GardenService.getAll()
+            .then(function (response) {
+                $scope.gardens = response.data;
+            });
+    };
+
+    $scope.getGardensByUser = function () {
+        GardenService.getByUser(UserService.getCurrentUserId())
             .then(function (response) {
                 $scope.gardens = response.data;
             });

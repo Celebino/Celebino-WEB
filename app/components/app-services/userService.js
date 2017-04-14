@@ -36,6 +36,17 @@ celebinoApp.factory("UserService", function($http) {
       user = email;
     };
 
+    //return current user object
+    var _getCurrentUser = function(){
+      return user;
+    };
+
+    //return current user's id
+    var _getCurrentUserId = function(){
+      console.log(user);
+      return user.id;
+    };
+
 
 
     return {
@@ -45,6 +56,8 @@ celebinoApp.factory("UserService", function($http) {
         getByUsername: _getByUsername,
         insertUser: _insertUser,
         loginUser: _loginUser,
-        setCurrentUserByEmail : _setCurrentUserByEmail
+        setCurrentUserByEmail : _setCurrentUserByEmail,
+        getCurrentUser: _getCurrentUser,
+        getCurrentUserId: _getCurrentUserId
     };
 });
